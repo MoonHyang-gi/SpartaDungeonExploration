@@ -85,7 +85,7 @@ public class UIInventory : MonoBehaviour
         if (data.canStack)
         {
             ItemSlot slot = GetItemStack(data);
-            if ((slot != null))
+            if (slot != null)
             {
                 slot.quantity++;
                 UpdateUI();
@@ -169,7 +169,7 @@ public class UIInventory : MonoBehaviour
         for (int i = 0; i < selectedItem.consumables.Length; i++)
         {
             selectedStatName.text += selectedItem.consumables[i].type.ToString() + "\n";
-            selectedStatValue.text += selectedItem.consumables[i].value.ToString() + "\n"; ;
+            selectedStatValue.text += selectedItem.consumables[i].value.ToString() + "\n";
         }
         
         useButton.SetActive(selectedItem.type == ItemType.Consumable);
@@ -187,8 +187,9 @@ public class UIInventory : MonoBehaviour
                 switch(selectedItem.consumables[i].type)
                 {
                     case ConsumableType.Health:
-                        //condition.Heal(selectedItem.consumables[i].value);
-                        break;
+                        condition.Heal(selectedItem.consumables[i].value); break;
+                    case ConsumableType.Hunger:
+                        condition.Eat(selectedItem.consumables[i].value); break;
                 }
             }
             RemoveSelectedItem();
