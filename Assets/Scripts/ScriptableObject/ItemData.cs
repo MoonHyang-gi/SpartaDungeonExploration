@@ -16,7 +16,7 @@ public enum ConsumableType
     Boost
 }
 
-[SerializeField]
+[System.Serializable]
 public class ItemDataConsumable
 {
     public ConsumableType type;

@@ -38,6 +38,12 @@ public class PlayerConditions : MonoBehaviour
         hunger.Add(amount);
     }
 
+    public void Boost(float amount)
+    {
+        stamina.Add(amount);
+
+    }
+
     public void Die()
     {
         //µà±Ý

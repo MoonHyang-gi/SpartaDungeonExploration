@@ -187,9 +187,14 @@ public class UIInventory : MonoBehaviour
                 switch(selectedItem.consumables[i].type)
                 {
                     case ConsumableType.Health:
-                        condition.Heal(selectedItem.consumables[i].value); break;
+                        condition.Heal(selectedItem.consumables[i].value); 
+                        break;
                     case ConsumableType.Hunger:
-                        condition.Eat(selectedItem.consumables[i].value); break;
+                        condition.Eat(selectedItem.consumables[i].value); 
+                        break;
+                    case ConsumableType.Boost:
+                        condition.Boost(selectedItem.consumables[i].value);
+                        break;
                 }
             }
             RemoveSelectedItem();
@@ -209,7 +214,7 @@ public class UIInventory : MonoBehaviour
         if (slots[selectedItemIndex].quantity <= 0)
         {
             selectedItem = null;
-            slots[selectedItemIndex] = null;
+            slots[selectedItemIndex].item = null;
             selectedItemIndex = -1;
             ClearSelectedItemWindow();
         }
